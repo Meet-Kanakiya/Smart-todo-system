@@ -1,7 +1,19 @@
+/* ============================================================
+   Group.css — Fully Responsive
+   Breakpoints:
+     Mobile  : 320px – 480px
+     Tablet  : 481px – 768px
+     Laptop  : 769px – 1024px
+     Desktop : 1025px+
+   ============================================================ */
+
+/* ── Groups Container ────────────────────────────────────── */
 .groups-container {
-  padding: 5px;
+  padding: 12px;
   max-width: 800px;
   margin: 0 auto;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .groups-container h2 {
@@ -9,94 +21,120 @@
   font-weight: 600;
   border-bottom: 2px solid #d6d7d8;
   padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  word-break: break-word;
 }
 
+/* ── Create Group Form ───────────────────────────────────── */
 .create-group-form {
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  gap: 10px;
+  margin-bottom: 28px;
   background-color: #fff;
-  padding: 15px;
-  padding-top: 10px;
-  padding-bottom: 0px;
+  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .create-group-form input {
-  padding: 14px;
+  width: 100%;
+  padding: 12px 14px;
   border-radius: 8px;
   border: 1px solid #ced4da;
-  font-size: 1rem;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.create-group-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
 }
 
 .create-group-form button {
-  padding: 10px;
-  margin-bottom: 15px;
-  margin-top: 0px;
+  width: 100%;
+  padding: 12px;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 14px;
+  min-height: 44px;
+  transition: background-color 0.2s ease;
 }
 
 .create-group-form button:hover {
   background-color: #0062cc;
 }
 
+.create-group-form button:active {
+  background-color: #004fa3;
+}
+
+/* ── Groups List ─────────────────────────────────────────── */
 .groups-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
+/* ── Group Card ──────────────────────────────────────────── */
 .group-card {
-  flex-direction: row;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
   background: #fff;
-  padding: 16px 20px;
+  padding: 14px 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid #e0e0e0;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-#member-count{
-  font-size: 15px;
-  min-width: 600px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
 .group-card:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.group-card-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .group-card h3 {
-  margin: 0;
-  font-size: 18px;
+  margin: 0 0 4px 0;
+  font-size: 16px;
   color: #333;
   font-weight: 600;
-  margin-top: 10px;
+  word-break: break-word;
 }
 
-.group-card p {
-  font-size: 14px;
+#member-count {
+  font-size: 13px;
   color: #6c757d;
-  margin-top: 4px;
+  margin: 0;
+  min-width: 0;        /* removes the 600px fixed min-width */
 }
 
 .group-card button {
+  width: 100%;         /* full width on mobile */
   border: none;
   border-radius: 6px;
-  padding: 10px;
-  margin-top: 0px;
+  padding: 10px 16px;
   color: white;
   font-weight: 500;
+  font-size: 14px;
   cursor: pointer;
+  min-height: 44px;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
 }
 
 .join-btn {
@@ -119,80 +157,63 @@
   text-align: center;
   color: #6c757d;
   padding: 20px;
+  font-size: 14px;
 }
 
-@media (max-width: 600px) {
-  .group-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .group-card button {
-    width: 100%;
-    text-align: center;
-  }
-
-  .create-group-form {
-    padding: 15px;
-  }
-
-  .create-group-form input,
-  .create-group-form button {
-    font-size: 0.9rem;
-  }
-}
-
-/* --- GroupTasks Styles --- */
+/* ── Group Tasks ─────────────────────────────────────────── */
 .group-tasks-container {
   max-width: 800px;
-  margin: 40px auto;
+  margin: 20px auto;
   background: #ffffff;
   border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .group-tasks-title {
   color: #2563eb;
   text-align: center;
   font-weight: 700;
-  font-size: 22px;
-  margin-bottom: 24px;
+  font-size: 18px;
+  margin-bottom: 16px;
 }
 
 .group-tasks-form {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 10px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .group-tasks-input {
-  flex: 1;
-  min-width: 240px;
+  width: 100%;
+  min-width: 0;        /* removes fixed min-width */
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #cbd5e1;
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .group-tasks-add-btn {
+  width: 100%;
   background: #2563eb;
   color: #fff;
   border: none;
-  padding: 10px 18px;
+  padding: 11px 18px;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-  transition: background 0.3s;
+  min-height: 44px;
+  transition: background 0.2s ease;
 }
 
 .group-tasks-add-btn:hover {
@@ -211,26 +232,26 @@
   border-radius: 10px;
   margin-bottom: 10px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
 }
 
 .task-text {
-  font-size: 15px;
+  font-size: 14px;
+  word-break: break-word;
 }
 
 .task-meta {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .task-createdby {
   color: #6b7280;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .task-delete-btn {
@@ -244,6 +265,7 @@
   align-items: center;
   justify-content: center;
   transition: opacity 0.2s;
+  min-height: 36px;
 }
 
 .task-delete-btn:hover {
@@ -254,62 +276,74 @@
   text-align: center;
   color: #9ca3af;
   font-style: italic;
+  font-size: 14px;
 }
-/* --- GroupChat Styles --- */
+
+/* ── Group Chat ───────────────────────────────────────────── */
 .group-chat-container {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 85vh;
   max-width: 800px;
-  margin: 20px auto;
+  margin: 10px auto;
   background: #f9fbff;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .group-chat-header {
   background: #2563eb;
   color: white;
-  padding: 16px 20px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .back-btn {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
   border-radius: 50%;
   width: 36px;
   height: 36px;
+  min-width: 36px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 0px;
+  flex-shrink: 0;
 }
 
 .group-chat-title {
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .group-chat-messages {
   flex: 1;
-  padding: 20px;
+  padding: 14px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .chat-message {
-  padding: 10px 14px;
+  padding: 10px 12px;
   border-radius: 14px;
-  max-width: 75%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  max-width: 85%;      /* wider on mobile for readability */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  font-size: 14px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .own-message {
@@ -327,7 +361,7 @@
 }
 
 .chat-username {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   margin-bottom: 4px;
   color: #1e3a8a;
@@ -335,42 +369,47 @@
 
 .group-chat-form {
   display: flex;
-  padding: 12px 20px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
   border-top: 1px solid #dbeafe;
   background: white;
-  gap: 10px;
+  flex-shrink: 0;
 }
 
 .group-chat-input {
-  flex: 1;
-  padding: 12px 16px;
-  margin-bottom: 5px;
+  width: 100%;
+  min-width: 0;        /* removes the 650px fixed min-width */
+  padding: 11px 14px;
   border-radius: 12px;
-  min-width: 650px;
   border: 1px solid #cbd5e1;
-  font-size: 15px;
+  font-size: 14px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .group-chat-send-btn {
+  width: 100%;
   background: #2563eb;
   color: white;
   border: none;
-  padding: 12px 16px;
+  padding: 11px 16px;
   border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-  margin-top: 5px;
-  margin-bottom: 5px;
   font-weight: 500;
+  font-size: 14px;
+  min-height: 44px;
+  transition: background 0.2s ease;
 }
 
 .group-chat-send-btn:hover {
   background: #1d4ed8;
 }
+
 .group-delete-btn {
   background: #ef4444;
   color: white;
@@ -379,8 +418,268 @@
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
+  min-height: 36px;
+  transition: opacity 0.2s ease;
 }
 
 .group-delete-btn:hover {
   opacity: 0.9;
+}
+
+/* ============================================================
+   Tablet → 481px and up
+   ============================================================ */
+@media (min-width: 481px) {
+  .groups-container {
+    padding: 16px;
+  }
+
+  .groups-container h2 {
+    font-size: 17px;
+    margin-bottom: 18px;
+  }
+
+  .create-group-form {
+    padding: 18px;
+    margin-bottom: 32px;
+  }
+
+  .create-group-form input {
+    font-size: 15px;
+  }
+
+  .create-group-form button {
+    font-size: 15px;
+  }
+
+  .group-card {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+  }
+
+  .group-card button {
+    width: auto;
+    flex-shrink: 0;
+    min-width: 80px;
+  }
+
+  .group-card h3 {
+    font-size: 17px;
+  }
+
+  #member-count {
+    font-size: 14px;
+  }
+
+  .group-tasks-container {
+    padding: 20px;
+    margin: 28px auto;
+  }
+
+  .group-tasks-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .group-tasks-form {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .group-tasks-input {
+    flex: 1;
+    font-size: 15px;
+  }
+
+  .group-tasks-add-btn {
+    width: auto;
+    flex-shrink: 0;
+    font-size: 15px;
+  }
+
+  .group-task-item {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .task-text {
+    font-size: 15px;
+  }
+
+  .task-meta {
+    flex-shrink: 0;
+  }
+
+  .group-chat-container {
+    margin: 16px auto;
+    border-radius: 20px;
+    height: 88vh;
+  }
+
+  .group-chat-header {
+    padding: 14px 20px;
+  }
+
+  .group-chat-title {
+    font-size: 18px;
+  }
+
+  .group-chat-messages {
+    padding: 16px 18px;
+  }
+
+  .chat-message {
+    max-width: 78%;
+    font-size: 15px;
+  }
+
+  .group-chat-form {
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .group-chat-input {
+    flex: 1;
+    font-size: 15px;
+  }
+
+  .group-chat-send-btn {
+    width: auto;
+    flex-shrink: 0;
+    padding: 12px 18px;
+  }
+}
+
+/* ============================================================
+   Laptop → 769px and up
+   ============================================================ */
+@media (min-width: 769px) {
+  .groups-container {
+    padding: 20px;
+  }
+
+  .groups-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .create-group-form {
+    padding: 20px;
+    margin-bottom: 36px;
+  }
+
+  .group-card {
+    padding: 16px 20px;
+  }
+
+  .group-tasks-container {
+    padding: 22px;
+    margin: 36px auto;
+  }
+
+  .group-tasks-title {
+    font-size: 21px;
+  }
+
+  .group-chat-container {
+    height: 90vh;
+    margin: 20px auto;
+  }
+
+  .group-chat-header {
+    padding: 16px 20px;
+  }
+
+  .group-chat-messages {
+    padding: 18px 20px;
+  }
+
+  .chat-message {
+    max-width: 75%;
+  }
+
+  .group-chat-form {
+    padding: 12px 20px;
+  }
+}
+
+/* ============================================================
+   Desktop → 1025px and up
+   ============================================================ */
+@media (min-width: 1025px) {
+  .groups-container {
+    padding: 5px;
+  }
+
+  .groups-container h2 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .create-group-form {
+    padding: 15px;
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin-bottom: 40px;
+  }
+
+  .create-group-form input {
+    font-size: 1rem;
+    padding: 14px;
+  }
+
+  .create-group-form button {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .group-tasks-container {
+    padding: 24px;
+    margin: 40px auto;
+  }
+
+  .group-tasks-title {
+    font-size: 22px;
+    margin-bottom: 24px;
+  }
+
+  .group-tasks-input {
+    font-size: 15px;
+  }
+
+  .group-chat-container {
+    height: 90vh;
+    margin: 20px auto;
+    border-radius: 20px;
+  }
+
+  .group-chat-header {
+    padding: 16px 20px;
+  }
+
+  .group-chat-title {
+    font-size: 20px;
+  }
+
+  .group-chat-messages {
+    padding: 20px;
+  }
+
+  .chat-message {
+    max-width: 75%;
+  }
+
+  .group-chat-form {
+    padding: 12px 20px;
+  }
+
+  .group-chat-input {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
 }

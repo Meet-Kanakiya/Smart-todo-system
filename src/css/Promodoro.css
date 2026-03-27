@@ -1,28 +1,19 @@
+/* ===== Container ===== */
 .pomodoro-container {
   font-family: 'Inter', sans-serif;
   min-height: 80vh;
-  margin-top: 30px;
+  margin-top: 20px;
+  padding: 20px 14px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #f3f6fb;
 }
-.pomodoro-controls.single-line {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: nowrap; /* prevent wrapping */
-  margin-bottom: 25px;
-}
 
-.pomodoro-controls.single-line button {
-  flex: 1; /* make all buttons same width */
-  min-width: 100px; /* ensure buttons don’t shrink too small */
-}
-
+/* ===== Card ===== */
 .pomodoro-card {
   background: #fff;
-  padding: 40px 40px;
+  padding: clamp(22px, 4vw, 40px);
   border-radius: 30px;
   width: 100%;
   max-width: 480px;
@@ -30,26 +21,28 @@
   box-shadow: 0 25px 60px rgba(0,0,0,0.15);
 }
 
+/* ===== Title ===== */
 .pomodoro-title {
-  font-size: 42px;
+  font-size: clamp(28px, 6vw, 42px);
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.pomodoro-title.focus { margin-top: 0px;color: #3498db; }
+.pomodoro-title.focus { color: #3498db; }
 .pomodoro-title.break { color: #2ecc71; }
 
 .pomodoro-subtitle {
   color: #7f8c8d;
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: clamp(14px, 3.5vw, 18px);
+  margin-bottom: 28px;
 }
 
+/* ===== Timer Circle ===== */
 .pomodoro-circle {
   position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 35px;
+  width: clamp(180px, 45vw, 220px);
+  height: clamp(180px, 45vw, 220px);
+  margin: 0 auto 30px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -58,41 +51,42 @@
 }
 
 .pomodoro-timer {
-  font-size: 52px;
+  font-size: clamp(36px, 8vw, 52px);
   font-weight: 700;
   color: #2c3e50;
 }
 
-.pomodoro-controls {
+/* ===== Controls ===== */
+.pomodoro-controls.single-line {
   display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 25px;
 }
 
 .pomodoro-controls button {
-  padding: 14px 32px;
-  border-radius: 18px;
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 16px;
   border: none;
   font-weight: 600;
   cursor: pointer;
-  font-size: 16px;
+  font-size: clamp(14px, 3vw, 16px);
   color: #fff;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
-.start-btn { background: #3498db; box-shadow: 0 8px 20px #3498db50; }
-.pause-btn { background: #f39c12; box-shadow: 0 8px 20px #f39c1250; }
-.reset-btn { background: #e74c3c; box-shadow: 0 8px 20px #e74c3c50; }
+.start-btn { background: #3498db; }
+.pause-btn { background: #f39c12; }
+.reset-btn { background: #e74c3c; }
 
-.sound-btn.on { background: #2ecc71; box-shadow: 0 8px 20px #2ecc7150; }
-.sound-btn.off { background: #f39c12; box-shadow: 0 8px 20px #f39c1250; }
+.sound-btn.on { background: #2ecc71; }
+.sound-btn.off { background: #f39c12; }
 
+/* ===== Session Count ===== */
 .session-count {
   color: #7f8c8d;
-  font-size: 15px;
-  margin-top: 8px;
+  font-size: 14px;
+  margin-top: 10px;
 }
 
 .session-count span {
@@ -100,51 +94,76 @@
   color: #34495e;
 }
 
+/* ===== Popup ===== */
 .modal-overlay {
   position: fixed;
-  top:0; left:0; right:0; bottom:0;
+  inset: 0;
   background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px;
   z-index: 1000;
 }
 
 .popup {
   background: #fff;
-  padding: 30px;
+  padding: 26px;
   border-radius: 20px;
+  width: 100%;
   max-width: 400px;
-  width: 90%;
   text-align: center;
   box-shadow: 0 12px 40px rgba(0,0,0,0.2);
   border-top: 8px solid #3498db;
 }
 
-.popup h2 { margin-bottom: 12px; font-size: 24px; }
-.popup p { color: #7f8c8d; margin-bottom: 28px; font-size: 16px; }
-
-.popup-buttons { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
-
-.primary-btn {
-  padding: 12px 28px;
-  border-radius: 14px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  color: #fff;
-  font-size: 16px;
-  transition: all 0.3s ease;
+.popup h2 {
+  margin-bottom: 12px;
+  font-size: clamp(20px, 5vw, 24px);
 }
 
-.secondary-btn {
-  padding: 12px 28px;
+.popup p {
+  color: #7f8c8d;
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.popup-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.primary-btn, .secondary-btn {
+  flex: 1 1 140px;
+  padding: 12px;
   border-radius: 14px;
-  border: 2px solid #95a5a6;
   font-weight: 600;
   cursor: pointer;
+  font-size: 15px;
+}
+
+.primary-btn { color: white; border: none; }
+.secondary-btn {
+  border: 2px solid #95a5a6;
   background: transparent;
   color: #34495e;
-  font-size: 16px;
-  transition: all 0.3s ease;
+}
+
+/* ===== Tablet ===== */
+@media (max-width: 768px) {
+  .pomodoro-container {
+    align-items: flex-start;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+  .pomodoro-controls.single-line {
+    flex-direction: column;
+  }
+
+  .pomodoro-controls button {
+    width: 100%;
+  }
 }

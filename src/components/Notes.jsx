@@ -1,5 +1,3 @@
-// src/components/Notes.jsx
-
 import React, { useState, useEffect } from "react";
 import {
   collection,
@@ -19,7 +17,6 @@ const Notes = () => {
   const [uploading, setUploading] = useState(false);
   const [resources, setResources] = useState([]);
 
-  // 🔹 Load all resources (notes) from Firestore
   const fetchResources = async () => {
     const q = query(collection(db, "resources"), orderBy("createdAt", "desc"));
     const querySnapshot = await getDocs(q);
@@ -34,31 +31,19 @@ const Notes = () => {
     fetchResources();
   }, []);
 
-  // 🔹 Handle file upload + Firestore entry
   const handleUpload = async (e) => {
     e.preventDefault();
-
-    if (!title || !description) {
-      alert("Please fill in all fields!");
-      return;
-    }
+    if (!title || !description) return alert("Please fill all fields");
 
     setUploading(true);
-
     try {
       let fileURL = "";
-
-      // If user selected a file, upload to Firebase Storage
       if (file) {
-        const storageRef = ref(
-          storage,
-          `resources/${Date.now()}_${file.name}`
-        );
+        const storageRef = ref(storage, `resources/${Date.now()}_${file.name}`);
         await uploadBytes(storageRef, file);
         fileURL = await getDownloadURL(storageRef);
       }
 
-      // Save data to Firestore
       await addDoc(collection(db, "resources"), {
         title,
         description,
@@ -67,120 +52,119 @@ const Notes = () => {
         createdAt: serverTimestamp(),
       });
 
-      // Reset form
       setTitle("");
       setDescription("");
       setFile(null);
-      setUploading(false);
-
-      // Reload list
       fetchResources();
-
-      alert("✅ Note uploaded successfully!");
+      alert("✅ Note uploaded!");
     } catch (err) {
-      console.error("Upload error:", err);
-      setUploading(false);
-      alert("❌ Failed to upload note.");
+      alert("Upload failed");
     }
+    setUploading(false);
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.heading}>📚 Resource Sharing Hub</h2>
+    <div style={{
+      maxWidth: 900,
+      margin: "auto",
+      padding: "clamp(12px,4vw,28px)",
+      fontFamily: "Segoe UI"
+    }}>
+      <h2 style={{
+        textAlign:"center",
+        fontSize:"clamp(22px,4vw,28px)",
+        color:"#2563eb"
+      }}>📚 Resource Sharing Hub</h2>
 
-      <form onSubmit={handleUpload} style={styles.form}>
+      {/* FORM */}
+      <form onSubmit={handleUpload} style={{
+        display:"flex",
+        flexDirection:"column",
+        gap:12,
+        marginTop:20,
+        background:"#fff",
+        padding:"clamp(14px,3vw,22px)",
+        borderRadius:14,
+        boxShadow:"0 4px 14px rgba(0,0,0,0.08)"
+      }}>
         <input
-          type="text"
           placeholder="Enter title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          style={styles.input}
+          onChange={(e)=>setTitle(e.target.value)}
+          style={inputStyle}
         />
 
         <textarea
           placeholder="Enter description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          style={styles.textarea}
+          onChange={(e)=>setDescription(e.target.value)}
+          style={{...inputStyle, minHeight:100}}
         />
 
-        <input
-          type="file"
-          onChange={(e) => setFile(e.target.files[0])}
-          style={styles.fileInput}
+        <input type="file"
+          onChange={(e)=>setFile(e.target.files[0])}
+          style={{padding:6}}
         />
 
-        <button type="submit" style={styles.button} disabled={uploading}>
+        <button style={buttonStyle} disabled={uploading}>
           {uploading ? "Uploading..." : "Upload Note"}
         </button>
       </form>
 
-      <hr style={{ margin: "30px 0" }} />
+      {/* LIST */}
+      <h3 style={{marginTop:30}}>🗂 Uploaded Notes</h3>
 
-      <h3 style={styles.subHeading}>🗂 Uploaded Notes</h3>
-      {resources.length === 0 ? (
-        <p>No notes uploaded yet — add one!</p>
-      ) : (
-        <ul style={styles.list}>
-          {resources.map((res) => (
-            <li key={res.id} style={styles.listItem}>
-              <h4>{res.title}</h4>
-              <p>{res.description}</p>
-              {res.fileURL && (
-                <a href={res.fileURL} target="_blank" rel="noopener noreferrer">
-                  📎 View File
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
+      <div style={{
+        display:"grid",
+        gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",
+        gap:15,
+        marginTop:15
+      }}>
+        {resources.map(res=>(
+          <div key={res.id} style={{
+            background:"#f9fafb",
+            padding:16,
+            borderRadius:12,
+            boxShadow:"0 2px 8px rgba(0,0,0,0.06)"
+          }}>
+            <h4>{res.title}</h4>
+            <p style={{fontSize:14,color:"#555"}}>{res.description}</p>
+
+            {res.fileURL && (
+              <a href={res.fileURL} target="_blank" rel="noreferrer"
+                style={{
+                  display:"inline-block",
+                  marginTop:8,
+                  color:"#2563eb",
+                  fontWeight:600
+                }}>
+                📎 View File
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-const styles = {
-  container: {
-    maxWidth: "700px",
-    margin: "0 auto",
-    backgroundColor: "#fff",
-    borderRadius: "10px",
-    padding: "25px",
-    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-  },
-  heading: { fontSize: "24px", fontWeight: "700", color: "#2563eb" },
-  form: { display: "flex", flexDirection: "column", gap: "10px", marginTop: "15px" },
-  input: {
-    padding: "10px",
-    border: "1px solid #ddd",
-    borderRadius: "6px",
-    fontSize: "16px",
-  },
-  textarea: {
-    padding: "10px",
-    border: "1px solid #ddd",
-    borderRadius: "6px",
-    fontSize: "16px",
-    resize: "vertical",
-  },
-  fileInput: { padding: "5px" },
-  button: {
-    padding: "10px",
-    backgroundColor: "#2563eb",
-    color: "white",
-    border: "none",
-    borderRadius: "6px",
-    cursor: "pointer",
-    fontSize: "16px",
-  },
-  subHeading: { fontSize: "20px", fontWeight: "600", marginBottom: "10px" },
-  list: { listStyleType: "none", padding: 0 },
-  listItem: {
-    background: "#f9fafb",
-    borderRadius: "8px",
-    padding: "10px",
-    marginBottom: "10px",
-  },
+const inputStyle = {
+  padding:12,
+  borderRadius:8,
+  border:"1px solid #ddd",
+  fontSize:16,
+  width:"100%"
+};
+
+const buttonStyle = {
+  padding:12,
+  background:"#2563eb",
+  color:"#fff",
+  border:"none",
+  borderRadius:8,
+  fontSize:16,
+  fontWeight:"bold",
+  cursor:"pointer"
 };
 
 export default Notes;

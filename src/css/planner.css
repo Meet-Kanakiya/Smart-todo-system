@@ -1,237 +1,143 @@
-/* Planner Container & Card */
+/* ===== Container ===== */
 .planner-container {
   max-width: 1200px;
-  margin: 30px auto;
+  margin: auto;
+  padding: 20px 16px;
   font-family: 'Poppins', sans-serif;
-  padding: 0 20px;
 }
 
 .planner-card {
   background: #fff;
   border-radius: 20px;
-  padding: 30px 40px 60px;
+  padding: 24px;
   box-shadow: 0 8px 30px rgba(0,0,0,0.07);
 }
 
-/* Title */
+/* ===== Title ===== */
 .planner-title {
   text-align: center;
-  margin-bottom: 40px;
-  margin-top: 0px;
-  font-size: 36px;
-  margin-bottom: 20px;
+  font-size: clamp(24px, 5vw, 36px);
   font-weight: 700;
   color: #2563eb;
-  letter-spacing: 0.5px;
+  margin-bottom: 30px;
 }
 
-/* Add Task Form */
+/* ===== Form ===== */
 .planner-form {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 12px;
-  flex-wrap: nowrap; /* keep one line */
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .planner-input {
-  flex: 1;
-  min-width: 700px;
+  flex: 1 1 300px;
+  width: 100%;
   padding: 14px;
   border-radius: 12px;
   border: 1.5px solid #cbd5e1;
   font-size: 16px;
-  outline: none;
-  transition: 0.3s;
-}
-
-.planner-input:focus {
-  border-color: #2563eb;
 }
 
 .planner-select {
-  padding: 12px 16px;
+  flex: 1 1 120px;
+  padding: 14px;
   border-radius: 12px;
   border: 1.5px solid #cbd5e1;
-  font-size: 16px;
-  font-weight: 500;
-  min-width: 130px;
 }
 
-/* Smaller Add Button */
 .planner-add-btn {
-  padding: 14px 18px; /* smaller size */
+  flex: 1 1 120px;
+  padding: 14px;
   background: #2563eb;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 20px;
+  color: white;
+  border-radius: 12px;
   font-weight: 600;
-  font-size: 15px;
-  transition: 0.3s;
-  white-space: nowrap; /* keep text in one line */
+  cursor: pointer;
 }
 
 .planner-add-btn:hover {
   background: #1d4ed8;
 }
 
-/* Weekly Planner Columns */
+/* ===== Weekly Grid ===== */
 .planner-weekly {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  justify-content: center;
 }
 
+/* ===== Day Column ===== */
 .planner-day {
-  flex: 1 1 150px;
-  max-width: 220px;
   background: #f9fbff;
   border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  max-height: 600px;
+  padding: 18px;
+  max-height: 500px;
   overflow-y: auto;
   border-top: 4px solid #2563eb;
 }
 
 .planner-day-title {
   text-align: center;
-  margin-bottom: 14px;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
-  color: #2563eb; 
-  margin-top: 0px;
+  color: #2563eb;
+  margin-bottom: 12px;
 }
 
-/* Task Items */
+/* ===== Task ===== */
 .planner-task {
-  background: #fff;
-  padding: 12px 14px;
-  margin-bottom: 12px;
+  background: white;
+  padding: 12px;
   border-radius: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  word-break: break-word;
+  margin-bottom: 10px;
+  gap: 10px;
 }
 
 .planner-task span {
   flex: 1;
-  padding-left: 20px;
-  margin-right: 12px;
-  color: #1f2c4d;
-  font-size: 16px;
-  min-width: 100px;
+  word-break: break-word;
+  font-size: 15px;
 }
 
+/* ===== Delete Button ===== */
 .planner-delete-btn {
   background: #ef4444;
-  color: #fff;
+  color: white;
   border: none;
-  padding:10px;
+  padding: 8px 12px;
   border-radius: 10px;
-  cursor: pointer;
   font-size: 13px;
-  transition: 0.3s;
-  margin-top: 0px;
+  cursor: pointer;
 }
 
 .planner-delete-btn:hover {
   background: #b91c1c;
 }
 
-/* Empty State */
+/* ===== Empty ===== */
 .planner-empty {
   text-align: center;
   color: #9ca3af;
-  font-size: 16px;
 }
 
-/* Mobile Responsive */
-@media screen and (max-width: 640px) {
-  .planner-form {
-    flex-wrap: wrap;
-  }
-
-  .planner-input{
-    padding: 14px 18px;
-    min-width: 350px;
-  }
-  .planner-select{
-      padding: 14px 18px;
-    min-width: 100px;
-  }
-  .planner-add-btn {
-    padding: 14px 18px;
-    min-width: 100px;
-    flex: 1 1 100%;
-  }
-
-  .planner-weekly {
-    gap: 12px;
-  }
-
-  .planner-day {
-    flex: 1 1 140px;
-    max-width: 180px;
-    padding: 16px;
-  }
-
-  .planner-day-title {
-    font-size: 20px;
-  }
-
-  .planner-task span {
-    font-size: 14px;
+/* ===== Tablet ===== */
+@media (max-width: 768px) {
+  .planner-card {
+    padding: 20px;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
   .planner-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: nowrap; /* keep one line */
-  margin-bottom: 40px;
+    flex-direction: column;
   }
- /* .planner-input{
-    padding: 14px 18px;
-    min-width: 350px;
-  }
-  .planner-select{
-    padding: 14px 18px;
-    min-width: 100px;
-  }
+
   .planner-add-btn {
-    padding: 14px 18px;
-    min-width: 100px;
-    flex: 1 1 100%;
-    transition: 0.3s;
-    white-space: nowrap; 
-  } */
-   .planner-task span{
-      min-width: 50px;
-   }
-   .planner-delete-btn{
-    padding: 5px;
-    padding-left: 5px;
-    padding-top:10px;
-    padding-bottom: 10px;
-    font-size: 13px;
-
-
-   }
-  .planner-day {
-    flex: 1 1 120px;
-    max-width: 160px;
-    padding: 14px;
+    width: 100%;
   }
 }
