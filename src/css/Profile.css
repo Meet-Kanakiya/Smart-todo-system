@@ -1,0 +1,126 @@
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* --- Card --- */
+.profile-card {
+  background-color: #ffffff;
+  padding: 30px 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.profile-card:hover {
+  transform: translateY(-3px);
+}
+
+/* --- Avatar --- */
+.avatar {
+  font-size: 80px;
+  color: #2563eb;
+  margin-bottom: 15px;
+}
+
+/* --- Heading --- */
+.profile-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.profile-card .role {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* --- Details --- */
+.details {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.details p {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #374151;
+  margin: 10px 0;
+}
+
+.details .icon {
+  color: #2563eb;
+  min-width: 20px;
+  font-size: 18px;
+}
+
+/* --- Buttons --- */
+.edit-btn,
+.save-btn {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s;
+}
+
+.edit-btn:hover,
+.save-btn:hover {
+  background-color: #1e40af;
+}
+
+/* --- Form Mode --- */
+.form-mode input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-mode input:focus {
+  border-color: #2563eb;
+}
+
+.form-mode input.disabled {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* --- Loading --- */
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #6b7280;
+  margin-top: 50px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 500px) {
+  .profile-card {
+    padding: 25px 15px;
+  }
+
+  .avatar {
+    font-size: 60px;
+  }
+}

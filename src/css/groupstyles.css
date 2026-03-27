@@ -1,0 +1,421 @@
+
+@import url('https://www.google.com/search?q=https://fonts.googleapis.com/css2%3Ffamily%3DInter:wght%40400%3B600%3B700%26display%3Dswap');
+
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f4f7f9; /* Light background for the whole page */
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.groups-container {
+padding: 20px;
+max-width: 800px;
+margin: 0 auto;
+background-color: #f4f7f9;
+min-height: 100vh;
+}
+
+ .groups-container h2 { color: #495057; font-weight: 600; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; margin-bottom: 20px; font-size: 1.5rem; / Default for desktop */ }
+
+
+.create-group-form {
+display: flex;
+flex-direction: column;
+gap: 12px;
+margin-bottom: 40px;
+background-color: #fff;
+padding: 20px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.create-group-form input {
+padding: 14px;
+border-radius: 8px;
+border: 1px solid #ced4da;
+font-size: 1rem;
+transition: border-color 0.2s;
+}
+
+.create-group-form input:focus {
+border-color: #007bff;
+outline: none;
+}
+
+.create-group-form button {
+padding: 14px 20px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 8px;
+cursor: pointer;
+font-weight: bold;
+transition: background-color 0.2s;
+}
+
+.create-group-form button:hover {
+background-color: #0056b3;
+}
+
+/* Groups List */
+.groups-list {
+display: flex;
+flex-direction: column;
+gap: 15px;
+}
+
+/* Group Card (for better naming, assuming GroupCard component uses this class) */
+.group-card {
+background: #fff;
+padding: 16px 20px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+border: 1px solid #e0e0e0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.group-card:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.group-card-details h3 {
+margin: 0;
+font-size: 18px;
+color: #333;
+font-weight: 600;
+}
+
+.group-card-details div {
+font-size: 14px;
+color: #6c757d;
+margin-top: 4px;
+}
+
+.group-card-btn {
+padding: 8px 16px;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-weight: 500;
+min-width: 80px;
+transition: opacity 0.2s;
+}
+
+.group-card-btn:hover {
+opacity: 0.9;
+}
+
+/* Button colors */
+.btn-enter {
+background-color: #007bff;
+color: white;
+}
+.btn-join {
+background-color: #28a745;
+color: white;
+}
+
+.chat-container {
+display: flex;
+flex-direction: column;
+height: 90vh;
+max-width: 800px;
+margin: 20px auto;
+background: #f9fbff;
+border-radius: 20px;
+box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+overflow: hidden;
+}
+
+/* Header */
+.chat-header {
+background: #2563eb;
+color: white;
+padding: 16px 20px;
+display: flex;
+align-items: center;
+gap: 10px;
+}
+
+.back-button {
+background: rgba(255,255,255,0.2);
+border: none;
+border-radius: 50%;
+width: 36px;
+height: 36px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+transition: background 0.2s;
+}
+
+.back-button:hover {
+background: rgba(255,255,255,0.3);
+}
+
+.chat-header h2 {
+margin: 0;
+font-size: 20px;
+font-weight: 600;
+}
+
+/* Messages Area */
+.messages-area {
+flex: 1;
+padding: 20px;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+
+/* Message Bubble - Base /
+.message-bubble {
+padding: 10px 14px;
+max-width: 75%;
+box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+word-wrap: break-word; / Ensure text wraps */
+}
+
+/* Own Message */
+.own-message {
+align-self: flex-end;
+background: #2563eb;
+color: white;
+border-radius: 14px 14px 0 14px;
+}
+
+/* Other User Message */
+.other-message {
+align-self: flex-start;
+background: #e5e7eb;
+color: #111827;
+border-radius: 14px 14px 14px 0;
+}
+
+.message-username {
+font-size: 12px;
+font-weight: 600;
+margin-bottom: 4px;
+color: #1e3a8a; /* Darker blue for contrast */
+}
+
+/* Input Section */
+.chat-input-form {
+display: flex;
+padding: 12px 20px;
+border-top: 1px solid #dbeafe;
+background: white;
+gap: 10px;
+}
+
+.chat-input {
+flex: 1;
+padding: 12px 16px;
+border-radius: 12px;
+border: 1px solid #cbd5e1;
+font-size: 15px;
+outline: none;
+transition: border-color 0.2s;
+}
+
+.chat-input:focus {
+border-color: #2563eb;
+}
+
+.send-button {
+background: #2563eb;
+color: white;
+border: none;
+padding: 12px 16px;
+border-radius: 12px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+font-weight: 500;
+transition: background-color 0.2s;
+}
+
+.send-button:hover {
+background-color: #1e40af;
+}
+
+.tasks-wrapper { max-width: 700px; margin: 40px auto; background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; }
+
+.tasks-wrapper h2 {
+color: #2563eb;
+text-align: center;
+margin-bottom: 20px;
+font-size: 1.5rem;
+}
+
+.task-form {
+display: flex;
+gap: 10px;
+margin-bottom: 20px;
+}
+
+.task-input {
+flex: 1;
+padding: 12px;
+border-radius: 8px;
+border: 1px solid #ccc;
+font-size: 15px;
+transition: border-color 0.2s;
+}
+
+.task-input:focus {
+border-color: #2563eb;
+outline: none;
+}
+
+.task-add-btn {
+background: #2563eb;
+color: white;
+border: none;
+padding: 12px 18px;
+border-radius: 8px;
+display: flex;
+align-items: center;
+gap: 6px;
+cursor: pointer;
+transition: background-color 0.2s;
+}
+
+.task-add-btn:hover {
+background-color: #1e40af;
+}
+
+.task-list {
+list-style: none;
+padding: 0;
+}
+
+.task-item {
+background: #f9fafb;
+padding: 12px;
+border-radius: 8px;
+margin-bottom: 10px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.task-meta {
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+.task-meta small {
+color: #6b7280;
+font-size: 0.8rem;
+}
+
+.task-delete-btn {
+background: #ef4444;
+border: none;
+color: white;
+padding: 6px 10px;
+border-radius: 6px;
+cursor: pointer;
+transition: background-color 0.2s;
+}
+
+.task-delete-btn:hover {
+background-color: #dc2626;
+}
+
+
+
+/* Apply to all views for general mobile usability /
+@media (max-width: 768px) {
+/ Global Container Padding */
+.groups-container, .tasks-wrapper {
+padding: 20px 10px;
+margin: 10px auto;
+min-height: auto;
+}
+
+/* Groups.jsx (List View) */ 
+.groups-container h2 {     
+    font-size: 1.3rem; 
+}
+.create-group-form {     
+    padding: 15px;     
+    gap: 8px;    
+     margin-bottom: 25px; 
+}  
+.group-card {     
+    flex-direction: column;     
+    align-items: flex-start;    
+    gap: 10px;     
+    padding: 15px; 
+}  
+.group-card-btn {     
+    width: 100%;
+     /* Full width button on mobile */    
+      margin-top: 5px;    
+       min-width: unset;    
+        font-size: 16px;
+ }  /* GroupChat.jsx (Chat View) */
+  .chat-container {   
+      height: 100vh; /* Use full screen height on mobile */  
+         margin: 0;    
+          border-radius: 0;
+}  .messages-area {  
+       padding: 10px;
+}
+.message-bubble {     
+    max-width: 90%; /* Allow bubbles to expand more */ 
+}  
+.chat-input-form {     
+    padding: 10px;     
+    flex-direction: row;     
+    gap: 8px; 
+}  
+.send-button {    
+     padding: 12px 14px;     
+     font-size: 0; /* Hide 'Send' text */     
+     width: 44px; /* Fixed size button for icon */    
+      flex-shrink: 0; 
+} 
+.send-button svg {     
+    margin-right: 0 !important;    
+     font-size: 18px; /* Show only icon */ 
+}  /* GroupTasks.jsx (Task View) */ 
+.tasks-wrapper {    
+     margin: 10px auto;  
+       padding: 15px; 
+} 
+.task-form {     
+    flex-direction: column;
+ }  
+ .task-add-btn {    
+    width: 100%;    
+     justify-content: center; 
+}  
+.task-item {    
+     flex-direction: column;    
+      align-items: flex-start;    
+       gap: 5px;    
+        padding: 10px; } .task-meta {     width: 100%;     justify-content: flex-end; } 
+
+
+
+/* Specific Tablet/Medium Screen Adjustments */
+@media (min-width: 600px) and (max-width: 800px) {
+.groups-container, .tasks-wrapper, .chat-container {
+max-width: 90%;
+}
+}

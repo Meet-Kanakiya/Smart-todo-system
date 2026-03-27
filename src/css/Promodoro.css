@@ -1,0 +1,150 @@
+.pomodoro-container {
+  font-family: 'Inter', sans-serif;
+  min-height: 80vh;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f6fb;
+}
+.pomodoro-controls.single-line {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap; /* prevent wrapping */
+  margin-bottom: 25px;
+}
+
+.pomodoro-controls.single-line button {
+  flex: 1; /* make all buttons same width */
+  min-width: 100px; /* ensure buttons don’t shrink too small */
+}
+
+.pomodoro-card {
+  background: #fff;
+  padding: 40px 40px;
+  border-radius: 30px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+.pomodoro-title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pomodoro-title.focus { margin-top: 0px;color: #3498db; }
+.pomodoro-title.break { color: #2ecc71; }
+
+.pomodoro-subtitle {
+  color: #7f8c8d;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.pomodoro-circle {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+.pomodoro-timer {
+  font-size: 52px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+.pomodoro-controls button {
+  padding: 14px 32px;
+  border-radius: 18px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.start-btn { background: #3498db; box-shadow: 0 8px 20px #3498db50; }
+.pause-btn { background: #f39c12; box-shadow: 0 8px 20px #f39c1250; }
+.reset-btn { background: #e74c3c; box-shadow: 0 8px 20px #e74c3c50; }
+
+.sound-btn.on { background: #2ecc71; box-shadow: 0 8px 20px #2ecc7150; }
+.sound-btn.off { background: #f39c12; box-shadow: 0 8px 20px #f39c1250; }
+
+.session-count {
+  color: #7f8c8d;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.session-count span {
+  font-weight: 600;
+  color: #34495e;
+}
+
+.modal-overlay {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  border-top: 8px solid #3498db;
+}
+
+.popup h2 { margin-bottom: 12px; font-size: 24px; }
+.popup p { color: #7f8c8d; margin-bottom: 28px; font-size: 16px; }
+
+.popup-buttons { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+
+.primary-btn {
+  padding: 12px 28px;
+  border-radius: 14px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.secondary-btn {
+  padding: 12px 28px;
+  border-radius: 14px;
+  border: 2px solid #95a5a6;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  color: #34495e;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}

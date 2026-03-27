@@ -1,0 +1,14 @@
+:root{ --primary:#1976d2; --bg:#f6f8fc }
+body{ font-family:Inter, Arial, sans-serif; margin:0; background:var(--bg); }
+.app-shell{ display:flex; min-height:100vh }
+.sidebar{ width:260px; background:white; padding:18px; box-shadow:2px 0 6px rgba(0,0,0,.06) }
+.main{ flex:1; padding:20px }
+.card{ background:white; border-radius:10px; padding:16px; box-shadow:0 2px 8px rgba(20,20,20,0.06); margin-bottom:16px }
+.button{ background:var(--primary); color:white; padding:8px 12px; border-radius:8px; border:none }
+.input{ padding:8px; border-radius:8px; border:1px solid #e3e6ee; width:100% }
+
+.header{ display:flex; justify-content:space-between; align-items:center }
+.todo-list li{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0f0f3 }
+small.gray{ color:#666 }
+.calendar-grid{ display:grid; grid-template-columns: repeat(7, 1fr); gap:8px; }
+.calendar-cell{ background:#fff; padding:8px; border-radius:8px; min-height:80px; box-shadow:0 1px 4px rgba(0,0,0,0.04) }
