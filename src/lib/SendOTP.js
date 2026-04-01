@@ -2,8 +2,8 @@ import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 
 export const sendOTPEmail = async (email, otp) => {
-  const serviceID = "service_jl4091l";   // 🔹 Replace with your actual Service ID
-  const templateID = "template_rkdjmrn"; // 🔹 Replace with your actual Template ID
+  const serviceID = "service_8bgg1j5";   // 🔹 Replace with your actual Service ID
+  const templateID = "template_9j610x9"; // 🔹 Replace with your actual Template ID
   const userID = "NJ8hDvZa3XDWnbBRS";     // 🔹 Found under Account > API Keys
 
   const templateParams = {
