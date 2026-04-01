@@ -1,143 +1,427 @@
-/* ===== Container ===== */
+/* ============================================================
+   Planner.css — Fully Responsive
+   Breakpoints:
+     Mobile  : 320px – 480px
+     Tablet  : 481px – 768px
+     Laptop  : 769px – 1024px
+     Desktop : 1025px+
+   ============================================================ */
+
+/* ── Container ───────────────────────────────────────────── */
 .planner-container {
+  width: 100%;
   max-width: 1200px;
-  margin: auto;
-  padding: 20px 16px;
+  margin: 0 auto;
+  padding: 12px 0;
   font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
 }
 
+/* ── Card ────────────────────────────────────────────────── */
 .planner-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 16px 14px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+  width: 100%;
 }
 
-/* ===== Title ===== */
+/* ── Title ───────────────────────────────────────────────── */
 .planner-title {
   text-align: center;
-  font-size: clamp(24px, 5vw, 36px);
+  font-size: 20px;
   font-weight: 700;
   color: #2563eb;
-  margin-bottom: 30px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  line-height: 1.3;
 }
 
-/* ===== Form ===== */
+/* ── Form ────────────────────────────────────────────────── */
 .planner-form {
   display: flex;
-  gap: 12px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-}
-
-.planner-input {
-  flex: 1 1 300px;
+  flex-direction: column;      /* stack on mobile */
+  gap: 10px;
+  margin-bottom: 20px;
   width: 100%;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1.5px solid #cbd5e1;
-  font-size: 16px;
+  box-sizing: border-box;
 }
 
+/* ── Input ───────────────────────────────────────────────── */
+.planner-input {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.planner-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+/* ── Select ──────────────────────────────────────────────── */
 .planner-select {
-  flex: 1 1 120px;
-  padding: 14px;
-  border-radius: 12px;
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
   border: 1.5px solid #cbd5e1;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
 }
 
+.planner-select:focus {
+  border-color: #2563eb;
+}
+
+/* ── Add Button ──────────────────────────────────────────── */
 .planner-add-btn {
-  flex: 1 1 120px;
-  padding: 14px;
+  width: 100%;
+  padding: 11px 14px;
   background: #2563eb;
   color: white;
-  border-radius: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  min-height: 44px;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .planner-add-btn:hover {
   background: #1d4ed8;
 }
 
-/* ===== Weekly Grid ===== */
+.planner-add-btn:active {
+  background: #1e40af;
+}
+
+/* ── Weekly Grid ─────────────────────────────────────────── */
 .planner-weekly {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: 1fr;   /* 1 column on mobile */
+  gap: 12px;
 }
 
-/* ===== Day Column ===== */
+/* ── Day Column ──────────────────────────────────────────── */
 .planner-day {
   background: #f9fbff;
-  border-radius: 20px;
-  padding: 18px;
-  max-height: 500px;
+  border-radius: 14px;
+  padding: 14px 12px;
+  max-height: 400px;
   overflow-y: auto;
   border-top: 4px solid #2563eb;
+  box-sizing: border-box;
 }
 
+/* ── Day Title ───────────────────────────────────────────── */
 .planner-day-title {
+  display: block;
   text-align: center;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   color: #2563eb;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-/* ===== Task ===== */
+/* ── Task Item ───────────────────────────────────────────── */
 .planner-task {
   background: white;
-  padding: 12px;
-  border-radius: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  gap: 10px;
+  margin-bottom: 8px;
+  gap: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
 }
 
 .planner-task span {
   flex: 1;
   word-break: break-word;
-  font-size: 15px;
+  overflow-wrap: break-word;
+  font-size: 13px;
+  line-height: 1.4;
+  min-width: 0;
 }
 
-/* ===== Delete Button ===== */
+/* ── Delete Button ───────────────────────────────────────── */
 .planner-delete-btn {
   background: #ef4444;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-size: 13px;
+  padding: 7px 11px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
+  flex-shrink: 0;
+  min-height: 36px;
+  transition: background-color 0.2s ease;
 }
 
 .planner-delete-btn:hover {
   background: #b91c1c;
 }
 
-/* ===== Empty ===== */
+.planner-delete-btn:active {
+  background: #991b1b;
+}
+
+/* ── Empty State ─────────────────────────────────────────── */
 .planner-empty {
   text-align: center;
   color: #9ca3af;
+  font-size: 14px;
+  padding: 20px 0;
 }
 
-/* ===== Tablet ===== */
-@media (max-width: 768px) {
-  .planner-card {
-    padding: 20px;
+/* ============================================================
+   Tablet → 481px and up
+   ============================================================ */
+@media (min-width: 481px) {
+  .planner-container {
+    padding: 14px 0;
   }
-}
 
-/* ===== Mobile ===== */
-@media (max-width: 480px) {
+  .planner-card {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  .planner-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
   .planner-form {
-    flex-direction: column;
+    flex-direction: row;        /* side by side on tablet+ */
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .planner-input {
+    flex: 1 1 200px;
+    padding: 12px 14px;
+    font-size: 15px;
+    border-radius: 11px;
+  }
+
+  .planner-select {
+    flex: 0 1 120px;
+    padding: 12px 14px;
+    font-size: 15px;
+    border-radius: 11px;
   }
 
   .planner-add-btn {
-    width: 100%;
+    flex: 0 1 100px;
+    width: auto;
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 11px;
+  }
+
+  .planner-weekly {
+    grid-template-columns: repeat(2, 1fr);   /* 2 columns on tablet */
+    gap: 14px;
+  }
+
+  .planner-day {
+    padding: 16px 14px;
+    border-radius: 16px;
+    max-height: 450px;
+  }
+
+  .planner-day-title {
+    font-size: 18px;
+    margin-bottom: 11px;
+  }
+
+  .planner-task {
+    padding: 11px 13px;
+    border-radius: 13px;
+    margin-bottom: 9px;
+  }
+
+  .planner-task span {
+    font-size: 14px;
+  }
+
+  .planner-delete-btn {
+    padding: 7px 12px;
+    font-size: 13px;
+    border-radius: 9px;
+  }
+
+  .planner-empty {
+    font-size: 15px;
+  }
+}
+
+/* ============================================================
+   Laptop → 769px and up
+   ============================================================ */
+@media (min-width: 769px) {
+  .planner-container {
+    padding: 16px 0;
+  }
+
+  .planner-card {
+    padding: 22px 20px;
+  }
+
+  .planner-title {
+    font-size: 26px;
+    margin-bottom: 24px;
+  }
+
+  .planner-form {
+    flex-wrap: nowrap;
+    margin-bottom: 28px;
+  }
+
+  .planner-input {
+    flex: 1 1 300px;
+    padding: 13px 14px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .planner-select {
+    flex: 0 1 130px;
+    padding: 13px 14px;
+    border-radius: 12px;
+  }
+
+  .planner-add-btn {
+    flex: 0 1 110px;
+    padding: 13px 18px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .planner-weekly {
+    grid-template-columns: repeat(3, 1fr);   /* 3 columns on laptop */
+    gap: 15px;
+  }
+
+  .planner-day {
+    padding: 17px 15px;
+    max-height: 480px;
+  }
+
+  .planner-day-title {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .planner-task {
+    padding: 11px 13px;
+    margin-bottom: 10px;
+  }
+
+  .planner-task span {
+    font-size: 14px;
+  }
+
+  .planner-delete-btn {
+    padding: 8px 12px;
+    border-radius: 10px;
+  }
+}
+
+/* ============================================================
+   Desktop → 1025px and up
+   ============================================================ */
+@media (min-width: 1025px) {
+  .planner-container {
+    padding: 20px 16px;
+  }
+
+  .planner-card {
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .planner-title {
+    font-size: clamp(24px, 5vw, 36px);
+    margin-bottom: 30px;
+  }
+
+  .planner-form {
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .planner-input {
+    flex: 1 1 300px;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  .planner-select {
+    flex: 1 1 120px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .planner-add-btn {
+    flex: 1 1 120px;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  .planner-weekly {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+
+  .planner-day {
+    padding: 18px;
+    border-radius: 20px;
+    max-height: 500px;
+  }
+
+  .planner-day-title {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .planner-task {
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 10px;
+    gap: 10px;
+  }
+
+  .planner-task span {
+    font-size: 15px;
+  }
+
+  .planner-delete-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .planner-empty {
+    font-size: 15px;
   }
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
-import { Check, Trash2, Plus, Search, Calendar } from "lucide-react";
+import { Check, Trash2, Plus } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   collection,
@@ -15,6 +15,7 @@ import {
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import emailjs from "@emailjs/browser";
+import "../css/TodoList.css";
 
 const formatDate = (dateString) => {
   if (!dateString) return "No Date";
@@ -78,112 +79,126 @@ export default function TodoList() {
 
   const filteredAndSortedTasks = useMemo(() => {
     let filtered = tasks.slice();
-    if (filterStatus !== "all") filtered = filtered.filter((t) => t.status === filterStatus);
-    if (searchTerm) filtered = filtered.filter((t) =>
-      t.title.toLowerCase().includes(searchTerm.toLowerCase())
+    if (filterStatus !== "all")
+      filtered = filtered.filter((t) => t.status === filterStatus);
+    if (searchTerm)
+      filtered = filtered.filter((t) =>
+        t.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    if (filterDate)
+      filtered = filtered.filter((t) => t.dueDate === filterDate);
+    return filtered.sort(
+      (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
     );
-    if (filterDate) filtered = filtered.filter((t) => t.dueDate === filterDate);
-    return filtered.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
   }, [tasks, searchTerm, filterDate, filterStatus]);
 
   return (
-    <div style={{maxWidth:900, margin:"auto", padding:"clamp(12px,4vw,24px)", fontFamily:"Segoe UI"}}>
-      <h1 style={{textAlign:"center"}}>🧩 Smart Task Manager</h1>
+    <div className="todo-wrapper">
+
+      <h1 className="todo-heading">🧩 Smart Task Manager</h1>
 
       {/* FILTERS */}
-      <div style={{
-        display:"flex",
-        flexWrap:"wrap",
-        gap:10,
-        background:"#ecf0f1",
-        padding:12,
-        borderRadius:12
-      }}>
+      <div className="todo-filters">
         <input
+          className="todo-filter-input"
           placeholder="Search..."
           value={searchTerm}
-          onChange={(e)=>setSearchTerm(e.target.value)}
-          style={{flex:"1 1 220px", padding:12, borderRadius:8, border:"1px solid #ccc"}}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
-
-        <select value={filterStatus} onChange={(e)=>setFilterStatus(e.target.value)}
-          style={{flex:"1 1 150px", padding:12, borderRadius:8}}>
+        <select
+          className="todo-filter-select"
+          value={filterStatus}
+          onChange={(e) => setFilterStatus(e.target.value)}
+        >
           <option value="all">All</option>
           <option value="todo">Todo</option>
           <option value="done">Done</option>
         </select>
-
-        <input type="date" value={filterDate}
-          onChange={(e)=>setFilterDate(e.target.value)}
-          style={{flex:"1 1 170px", padding:12, borderRadius:8}} />
+        <input
+          className="todo-filter-date"
+          type="date"
+          value={filterDate}
+          onChange={(e) => setFilterDate(e.target.value)}
+        />
       </div>
 
-      {/* ADD TASK */}
-      <form onSubmit={addTask} style={{display:"flex", flexWrap:"wrap", gap:10, marginTop:15}}>
-        <input value={title} onChange={(e)=>setTitle(e.target.value)}
+      {/* ADD TASK FORM */}
+      <form className="todo-form" onSubmit={addTask}>
+        <input
+          className="todo-title-input"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           placeholder="Task title"
-          style={{flex:"2 1 250px", padding:12, borderRadius:8}}/>
-
-        <select value={priority} onChange={(e)=>setPriority(e.target.value)}
-          style={{flex:"1 1 140px", padding:12, borderRadius:8}}>
+        />
+        <select
+          className="todo-priority-select"
+          value={priority}
+          onChange={(e) => setPriority(e.target.value)}
+        >
           <option value="low">Low</option>
           <option value="normal">Normal</option>
           <option value="high">High</option>
         </select>
-
-        <input type="date" value={dueDate}
-          onChange={(e)=>setDueDate(e.target.value)}
-          style={{flex:"1 1 160px", padding:12, borderRadius:8}}/>
-
-        <button style={{
-          flex:"1 1 150px",
-          background:"#3498db",
-          color:"#fff",
-          border:"none",
-          borderRadius:8,
-          padding:12,
-          display:"flex",
-          justifyContent:"center",
-          alignItems:"center",
-          gap:6
-        }}>
-          <Plus size={18}/> Add
+        <input
+          className="todo-due-input"
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+        />
+        <button type="submit" className="todo-add-btn">
+          <Plus size={18} /> Add
         </button>
       </form>
 
       {/* TASK LIST */}
-      <ul style={{listStyle:"none", padding:0, marginTop:20}}>
+      <ul className="todo-list">
         <AnimatePresence>
-          {filteredAndSortedTasks.map((t)=>(
-            <motion.li key={t.id} layout
-              style={{
-                display:"flex",
-                flexWrap:"wrap",
-                gap:10,
-                justifyContent:"space-between",
-                background:"#f8f9fa",
-                padding:15,
-                borderRadius:12,
-                marginBottom:12,
-                borderLeft:`6px solid ${getPriorityColor(t.priority)}`
-              }}>
-              <div style={{flex:"1 1 220px"}}>
-                <strong>{t.title}</strong>
-                <div style={{fontSize:12}}>Due: {formatDate(t.dueDate)}</div>
+          {filteredAndSortedTasks.map((t) => (
+            <motion.li
+              key={t.id}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className={`todo-item todo-item--${t.status}`}
+              style={{ borderLeftColor: getPriorityColor(t.priority) }}
+            >
+              <div className="todo-item-info">
+                <strong className="todo-item-title">{t.title}</strong>
+                <div className="todo-item-due">
+                  Due: {formatDate(t.dueDate)}
+                </div>
+                <span className={`todo-item-badge todo-item-badge--${t.priority}`}>
+                  {t.priority}
+                </span>
               </div>
 
-              <div style={{display:"flex", gap:6}}>
-                <button onClick={()=>toggleTaskStatus(t)} style={{background:"#2ecc71",color:"#fff",border:"none",padding:"6px 10px",borderRadius:6}}>
-                  <Check size={14}/>
+              <div className="todo-item-actions">
+                <button
+                  onClick={() => toggleTaskStatus(t)}
+                  className={`todo-btn todo-btn--check ${t.status === "done" ? "todo-btn--done" : ""}`}
+                  title={t.status === "done" ? "Mark as todo" : "Mark as done"}
+                >
+                  <Check size={15} />
                 </button>
-                <button onClick={()=>removeTask(t)} style={{background:"#e74c3c",color:"#fff",border:"none",padding:"6px 10px",borderRadius:6}}>
-                  <Trash2 size={14}/>
+                <button
+                  onClick={() => removeTask(t)}
+                  className="todo-btn todo-btn--delete"
+                  title="Delete task"
+                >
+                  <Trash2 size={15} />
                 </button>
               </div>
             </motion.li>
           ))}
         </AnimatePresence>
+
+        {filteredAndSortedTasks.length === 0 && (
+          <li className="todo-empty">No tasks found. Add one above!</li>
+        )}
       </ul>
+
     </div>
   );
 }
