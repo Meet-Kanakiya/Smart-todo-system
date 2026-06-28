@@ -18,22 +18,28 @@
 /* ── Container ───────────────────────────────────────────── */
 .profile-container {
   width: 100%;
-  padding: 12px 0;
+  min-height: calc(100vh - 90px);
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
   box-sizing: border-box;
 }
 
 /* ── Card ────────────────────────────────────────────────── */
 .profile-card {
   width: 100%;
-  max-width: 420px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 24px 18px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  max-width: 500px;
+  background: #fff;
+  border-radius: 20px;
+  padding: clamp(22px,4vw,34px);
+  box-shadow: 0 10px 35px rgba(0,0,0,.08);
   text-align: center;
-  box-sizing: border-box;
+  transition: .3s;
+}
+
+.profile-card:hover{
+    transform: translateY(-3px);
 }
 
 /* ── Avatar ──────────────────────────────────────────────── */
@@ -67,19 +73,22 @@
   margin-bottom: 18px;
 }
 
-.details p {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: #374151;
-  padding: 9px 12px;
-  border-radius: 8px;
-  background: #f8fafc;
-  margin-bottom: 8px;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  box-sizing: border-box;
+.details p{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+
+    padding:12px 14px;
+    margin-bottom:10px;
+
+    background:#f8fafc;
+    border-radius:10px;
+
+    font-size:14px;
+    line-height:1.5;
+
+    word-break:break-word;
+    overflow-wrap:anywhere;
 }
 
 .details .icon {
@@ -89,7 +98,7 @@
 }
 
 /* ── Edit Button ─────────────────────────────────────────── */
-.edit-btn {
+/* .edit-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -114,6 +123,22 @@
 
 .edit-btn:active {
   background: #0d47a1;
+} */
+ .edit-btn,
+.save-btn{
+
+height:48px;
+border-radius:10px;
+
+transition:.25s;
+
+}
+
+.edit-btn:hover,
+.save-btn:hover{
+
+transform:translateY(-2px);
+
 }
 
 /* ── Form Mode Card ──────────────────────────────────────── */
@@ -335,4 +360,87 @@
     font-size: 15px;
     padding: 12px 0;
   }
+}
+
+@media(max-width:480px){
+
+.profile-container{
+
+padding:15px;
+
+}
+
+.profile-card{
+
+padding:20px 16px;
+
+}
+
+.avatar{
+
+font-size:60px;
+
+}
+
+.profile-card h2{
+
+font-size:20px;
+
+}
+
+.details p{
+
+font-size:13px;
+padding:10px;
+
+}
+
+.edit-btn,
+.save-btn{
+
+height:46px;
+
+}
+
+}
+
+@media(max-width:360px){
+
+.profile-card{
+
+padding:18px 14px;
+
+}
+
+.avatar{
+
+font-size:54px;
+
+}
+
+.profile-card h2{
+
+font-size:18px;
+
+}
+
+.role{
+
+font-size:11px;
+
+}
+
+.details p{
+
+font-size:12px;
+gap:8px;
+
+}
+
+.details .icon{
+
+font-size:13px;
+
+}
+
 }
