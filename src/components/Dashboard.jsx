@@ -297,24 +297,24 @@ export default function Dashboard() {
   };
 
   const titleMap = {
-    ai:        "AI Study Suggestions 🤖",
-    todo:      "Your To-Do List 📝",
-    profile:   "Profile 👤",
-    pomodoro:  "Pomodoro Strategy 🕒",
-    planner:   "Study Planner 📅",
-    notes:     "My Notes 🗒",
-    groups:    "Collaborative Study Rooms 👥",
+    ai: "AI Study Suggestions 🤖",
+    todo: "Your To-Do List 📝",
+    profile: "Profile 👤",
+    pomodoro: "Pomodoro Strategy 🕒",
+    planner: "Study Planner 📅",
+    notes: "My Notes 🗒",
+    groups: "Collaborative Study Rooms 👥",
     analytics: "Task Performance Analytics 📈",
   };
 
   const renderMainSection = () => {
     switch (activeSection) {
-      case "profile":   return <Profile />;
-      case "todo":      return <TodoList />;
-      case "planner":   return <Planner />;
-      case "pomodoro":  return <Pomodoro />;
-      case "notes":     return <Notes />;
-      case "groups":    return <Groups />;
+      case "profile": return <Profile />;
+      case "todo": return <TodoList />;
+      case "planner": return <Planner />;
+      case "pomodoro": return <Pomodoro />;
+      case "notes": return <Notes />;
+      case "groups": return <Groups />;
       case "analytics": return <Analytics />;
       case "ai":
         return (
@@ -366,9 +366,17 @@ export default function Dashboard() {
         setActiveSection={setActiveSection}
       />
 
-      <div className="flex-1 w-0 min-w-0 px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
+      <div className="flex-1 min-w-0 overflow-x-hidden px-4 py-6 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
 
-        <h1 className="text-xl sm:text-2xl lg:text-[26px] font-bold text-blue-600 mt-0 mb-5 sm:mb-6 leading-snug">
+        <h1 className="
+text-xl
+sm:text-2xl
+lg:text-3xl
+font-bold
+text-blue-600
+mb-6
+break-words
+">
           {titleMap[activeSection] ?? "Welcome to Smart Planner 🚀"}
         </h1>
 

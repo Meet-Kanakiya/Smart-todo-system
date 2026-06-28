@@ -87,7 +87,7 @@
 
 /* ── Sidebar Base ────────────────────────────────────────── */
 .sidebar {
-  width: 260px;
+  width: 250px;
   min-height: 100vh;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
@@ -99,6 +99,8 @@
   font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  overflow-y:auto;
+  scrollbar-width:thin;
 }
 
 /* ── Desktop sidebar: visible only on 769px+ ────────────── */
@@ -116,6 +118,7 @@
   z-index: 300;
   min-height: 100vh;
   height: 100%;
+  width:min(250px,85vw);
   overflow-y: auto;
   padding-top: 56px;
 }
@@ -163,6 +166,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  overflow-wrap:anywhere;
 }
 
 /* ── Navigation Menu ─────────────────────────────────────── */
@@ -177,6 +181,7 @@
 
 .nav-item button {
   display: flex;
+  transition:.25s;
   align-items: center;
   gap: 10px;
   width: 100%;
@@ -190,13 +195,15 @@
   font-size: 14px;
   text-align: left;
   min-height: 44px;         /* touch-friendly tap target */
-  transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
   box-sizing: border-box;
+  height:48px;/*edit*/
 }
 
 .nav-item button.active {
   background: #1976d2;
-  color: #fff;
+  color:white;
+  transform:translateX(4px);
   font-weight: 600;
   box-shadow: 0 8px 20px rgba(25, 118, 210, 0.2);
 }
@@ -204,6 +211,7 @@
 .nav-item button:hover {
   background: #1976d2;
   color: #fff;
+  transform:translateX(4px);
 }
 
 .nav-item button:hover span {
@@ -239,6 +247,7 @@
 .logout-btn:hover {
   transform: scale(1.03);
   background: #dc2626;
+  transform:translateY(-2px);
 }
 
 .logout-btn:active {
@@ -260,6 +269,7 @@
 
   .sidebar-drawer {
     width: 280px;
+    box-shadow:0 0 40px rgba(0,0,0,.25);
   }
 
   .brand-logo {
@@ -285,7 +295,18 @@
     margin-bottom: 30px;
   }
 }
+.sidebar::-webkit-scrollbar{
 
+width:6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+background:#d0d7de;
+border-radius:20px;
+
+}
 /* ============================================================
    Laptop → 769px and up
    Desktop sidebar visible, topbar + drawer hidden
@@ -311,7 +332,7 @@
   }
 
   .sidebar {
-    width: 240px;
+    width: 250px;
     padding: 24px 16px;
   }
 
@@ -386,4 +407,13 @@
     padding: 12px;
     font-size: 15px;
   }
+}
+@media (max-width:768px){
+
+.dashboard-main{
+
+padding-top:75px;
+
+}
+
 }
