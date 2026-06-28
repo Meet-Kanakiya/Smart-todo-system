@@ -135,7 +135,7 @@ https://github.com/Meet-Kanakiya
 
 ## 👨‍💻 Developed By
 
-**Meet Kanakiya**
+**Meet Kankiya**
 
 Computer Engineering Student
 
