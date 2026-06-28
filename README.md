@@ -1,29 +1,144 @@
-# Smart To-Do & Study Planner
+<p align="center">
+  <img src="./assets/banner.png" alt="Smart Todo System Banner" width="100%">
+</p>
 
-This is a runnable React (v18) + Firebase project scaffold with:
-- Authentication (Firebase)
-- To-Do tasks (Firestore)
-- Planner (simple calendar view)
-- Pomodoro timer
-- Notes + File upload (Firebase Storage)
-- Groups (basic)
-- Mocked Gemini AI suggestions (client-side mock + example of server call)
-- Sample Firebase config file (replace with your project values)
+<h1 align="center">✅ Smart Todo System</h1>
 
-## Run locally
+<p align="center">
+A modern task management web application built with React.js and Firebase to help users organize tasks, plan schedules, collaborate with groups, and boost productivity.
+</p>
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+---
 
-2. Replace firebase config in `src/firebase.js` with your credentials or keep sample for testing.
+## 🚀 Live Demo
 
-3. Start:
-   ```bash
-   npm start
-   ```
+🌐 **Smart Todo System**
 
-Notes:
-- This scaffold uses client-side Firebase and a **mocked** Gemini helper inside `src/lib/gemini.js`.
-- To integrate real Gemini API, follow the comments inside `src/lib/gemini.js` and prefer a server-side proxy (to keep keys secret).
+https://smart-todo-system-app.netlify.app/
+
+---
+
+## 🛠️ Tech Stack
+
+### 🎨 Frontend
+
+- React.js
+- HTML5
+- CSS3
+- JavaScript
+- React Router DOM
+
+### 🔥 Backend & Database
+
+- Firebase Authentication
+- Cloud Firestore
+
+---
+
+## ✨ Features
+
+- 🔐 Secure Login & Signup
+- ✉️ Email OTP Verification
+- 🔑 Forgot Password
+- ✅ Create, Update & Delete Tasks
+- 📅 Daily Planner
+- 👥 Group Management
+- 🔒 Protected Routes
+- 📱 Responsive Design
+- ⚡ Fast & User-Friendly Interface
+
+---
+
+## 📂 Project Structure
+
+```text
+Smart-todo-system
+│
+├── public
+├── src
+│   ├── components
+│   ├── firebase
+│   ├── css
+│   └── assets
+│
+├── package.json
+└── README.md
+```
+
+---
+
+## 📸 Preview
+
+> Screenshots will be added soon.
+
+---
+
+## 📥 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/Meet-Kanakiya/Smart-todo-system.git
+```
+
+Navigate to the project folder
+
+```bash
+cd Smart-todo-system
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 📚 What I Learned
+
+- Building Single Page Applications with React.js
+- Firebase Authentication
+- Cloud Firestore Database
+- Protected Routes
+- State Management using React Hooks
+- CRUD Operations
+- Component-Based Architecture
+- Responsive UI Design
+- Real-world Project Structure
+
+---
+
+## 🎯 Purpose
+
+This project was developed to improve my frontend development skills and gain practical experience with authentication, task management, and Firebase integration while building a real-world productivity application.
+
+---
+
+## 📬 Contact
+
+💼 LinkedIn
+
+https://www.linkedin.com/in/meet-kanakiya-a5b951367/
+
+💻 GitHub
+
+https://github.com/Meet-Kanakiya
+
+---
+
+## 👨‍💻 Developed By
+
+**Meet Kanakiya**
+
+Computer Engineering Student
+
+Passionate about Full Stack Development, Python, and building real-world web applications.
+
+⭐ If you found this project useful, consider giving it a Star!
