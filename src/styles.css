@@ -12,3 +12,9 @@ body{ font-family:Inter, Arial, sans-serif; margin:0; background:var(--bg); }
 small.gray{ color:#666 }
 .calendar-grid{ display:grid; grid-template-columns: repeat(7, 1fr); gap:8px; }
 .calendar-cell{ background:#fff; padding:8px; border-radius:8px; min-height:80px; box-shadow:0 1px 4px rgba(0,0,0,0.04) }
+body {
+  margin: 0;
+}
+#root {
+  width:100%;
+}
