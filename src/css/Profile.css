@@ -1,12 +1,3 @@
-/* ============================================================
-   Profile.css — Fully Responsive
-   Breakpoints:
-     Mobile  : 320px – 480px
-     Tablet  : 481px – 768px
-     Laptop  : 769px – 1024px
-     Desktop : 1025px+
-   ============================================================ */
-
 /* ── Loading State ───────────────────────────────────────── */
 .loading {
   text-align: center;
