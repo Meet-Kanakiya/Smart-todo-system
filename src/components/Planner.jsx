@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   collection,
   addDoc,
@@ -20,6 +20,14 @@ export default function Planner() {
   const [day, setDay] = useState("Mon");
   const { user } = useAuth();
   const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const inputRef = useRef(null);
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({
+      behavior: "smooth"
+    });
+  }, [entries]);
 
   useEffect(() => {
     if (!user) {
@@ -38,7 +46,12 @@ export default function Planner() {
 
   const add = async (e) => {
     e.preventDefault();
-    if (!subject.trim() || !user) return;
+    if (!subject.trim()) {
+      Swal.fire("Oops!", "Please enter a task.", "warning");
+      return;
+    }
+
+    if (!user) return;
 
     await addDoc(collection(db, "users", user.uid, "timetable"), {
       subject,
@@ -47,11 +60,35 @@ export default function Planner() {
     });
 
     setSubject("");
+    Swal.fire({
+      toast: true,
+      position: "top-end",
+      icon: "success",
+      title: "Task Added",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    inputRef.current?.focus();
   };
 
   const remove = async (id) => {
     if (!user) return;
+
+    const result = await Swal.fire({
+      title: "Delete Task?",
+      text: "This action cannot be undone.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#ef4444",
+      cancelButtonColor: "#6b7280",
+      confirmButtonText: "Delete",
+    });
+
+    if (!result.isConfirmed) return;
+
     await deleteDoc(doc(db, "users", user.uid, "timetable", id));
+
+    Swal.fire("Deleted!", "Task removed successfully.", "success");
   };
 
   const activeDays = days.filter((d) => entries.some((en) => en.day === d));
@@ -64,11 +101,16 @@ export default function Planner() {
 
         <form onSubmit={add} className="planner-form">
           <input
+            ref={inputRef}
+            maxLength={80}
             className="planner-input"
             placeholder="Enter a new task..."
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
+          <p className="char-count">
+            {subject.length}/80
+          </p>
           <select
             className="planner-select"
             value={day}
@@ -79,13 +121,14 @@ export default function Planner() {
             ))}
           </select>
           <button type="submit" className="planner-add-btn">
-            Add
+            ➕ Add Task
           </button>
         </form>
 
         {activeDays.length === 0 ? (
           <p className="planner-empty">
-            No tasks yet — add your first one above!
+            📅 No planner tasks yet
+            Start by adding your first task above.
           </p>
         ) : (
           <div className="planner-weekly">
@@ -118,6 +161,7 @@ export default function Planner() {
         )}
 
       </div>
+      <div ref={bottomRef}></div>
     </div>
   );
 }

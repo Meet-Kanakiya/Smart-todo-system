@@ -683,3 +683,10 @@
     padding: 12px 16px;
   }
 }
+
+.empty-chat{
+    text-align:center;
+    color:#888;
+    margin:auto;
+    font-size:15px;
+}
