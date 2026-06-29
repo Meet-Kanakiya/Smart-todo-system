@@ -1,436 +1,252 @@
-/* ── Loading State ───────────────────────────────────────── */
-.loading {
-  text-align: center;
-  padding: 40px 20px;
-  color: #6b7280;
-  font-size: 15px;
-}
+/* ===========================
+   PROFILE PAGE
+=========================== */
 
-/* ── Container ───────────────────────────────────────────── */
 .profile-container {
   width: 100%;
-  min-height: calc(100vh - 90px);
+  min-height: calc(100vh - 48px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 16px;
+  padding: 24px;
   box-sizing: border-box;
 }
 
-/* ── Card ────────────────────────────────────────────────── */
 .profile-card {
   width: 100%;
   max-width: 500px;
   background: #fff;
-  border-radius: 20px;
-  padding: clamp(22px,4vw,34px);
-  box-shadow: 0 10px 35px rgba(0,0,0,.08);
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.08);
   text-align: center;
   transition: .3s;
 }
 
 .profile-card:hover{
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
-/* ── Avatar ──────────────────────────────────────────────── */
-.avatar {
-  font-size: 64px;
-  color: #1976d2;
-  margin-bottom: 10px;
+.avatar{
+  font-size:100px;
+  color:#1976d2;
+  margin-bottom:15px;
 }
 
-/* ── Name ────────────────────────────────────────────────── */
-.profile-card h2 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #111827;
-  margin: 0 0 4px 0;
-  word-break: break-word;
+.profile-card h2{
+  margin:0;
+  font-size:28px;
+  color:#222;
 }
 
-/* ── Role Label ──────────────────────────────────────────── */
-.role {
-  font-size: 12px;
-  color: #6b7280;
-  margin-bottom: 16px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+.role{
+  color:#666;
+  margin-top:8px;
+  margin-bottom:25px;
 }
 
-/* ── Details List ────────────────────────────────────────── */
-.details {
-  text-align: left;
-  margin-bottom: 18px;
+.details{
+  text-align:left;
 }
 
 .details p{
-    display:flex;
-    align-items:flex-start;
-    gap:12px;
-
-    padding:12px 14px;
-    margin-bottom:10px;
-
-    background:#f8fafc;
-    border-radius:10px;
-
-    font-size:14px;
-    line-height:1.5;
-
-    word-break:break-word;
-    overflow-wrap:anywhere;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  background:#f8f9fb;
+  padding:13px 15px;
+  border-radius:10px;
+  margin-bottom:12px;
+  font-size:15px;
+  word-break:break-word;
 }
 
-.details .icon {
-  color: #1976d2;
-  font-size: 14px;
-  flex-shrink: 0;
+.icon{
+  color:#1976d2;
+  min-width:18px;
 }
 
-/* ── Edit Button ─────────────────────────────────────────── */
-/* .edit-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  min-height: 44px;
-  width: 100%;
-  transition: background-color 0.2s ease;
-  box-sizing: border-box;
-}
-
-.edit-btn:hover {
-  background: #1565c0;
-}
-
-.edit-btn:active {
-  background: #0d47a1;
-} */
- .edit-btn,
+.edit-btn,
 .save-btn{
-
-height:48px;
-border-radius:10px;
-
-transition:.25s;
-
+  width:100%;
+  margin-top:18px;
+  padding:13px;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  background:#1976d2;
+  color:white;
+  font-size:16px;
+  font-weight:600;
+  transition:.25s;
 }
 
 .edit-btn:hover,
 .save-btn:hover{
-
-transform:translateY(-2px);
-
+  background:#1259a7;
 }
 
-/* ── Form Mode Card ──────────────────────────────────────── */
-.profile-card.form-mode {
-  text-align: left;
+.form-mode form{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  margin-top:25px;
 }
 
-.profile-card.form-mode h2 {
-  text-align: center;
-  font-size: 18px;
-  margin-bottom: 16px;
-  color: #1976d2;
+.form-mode input{
+  width:100%;
+  padding:13px 15px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  outline:none;
+  font-size:15px;
+  box-sizing:border-box;
+  transition:.2s;
 }
 
-/* ── Form Inputs ─────────────────────────────────────────── */
-.profile-card.form-mode input {
-  width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.form-mode input:focus{
+  border-color:#1976d2;
+  box-shadow:0 0 0 3px rgba(25,118,210,.15);
 }
 
-.profile-card.form-mode input:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
+.disabled{
+  background:#ececec;
+  cursor:not-allowed;
 }
 
-.profile-card.form-mode input.disabled,
-.profile-card.form-mode input:disabled {
-  background-color: #f3f4f6;
-  cursor: not-allowed;
-  opacity: 0.7;
+.loading{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:70vh;
+  font-size:22px;
+  font-weight:600;
 }
 
-/* ── Save Button ─────────────────────────────────────────── */
-.save-btn {
-  width: 100%;
-  padding: 11px 0;
-  background: #1976d2;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  min-height: 44px;
-  margin-top: 4px;
-  transition: background-color 0.2s ease;
-  box-sizing: border-box;
-}
+/* ===========================
+   MOBILE
+=========================== */
 
-.save-btn:hover {
-  background: #1565c0;
-}
-
-.save-btn:active {
-  background: #0d47a1;
-}
-
-/* ── Autofill override ───────────────────────────────────── */
-.profile-card input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
-  -webkit-text-fill-color: #111 !important;
-}
-
-/* ============================================================
-   Tablet → 481px and up
-   ============================================================ */
-@media (min-width: 481px) {
-  .profile-card {
-    padding: 28px 24px;
-  }
-
-  .avatar {
-    font-size: 72px;
-  }
-
-  .profile-card h2 {
-    font-size: 20px;
-  }
-
-  .role {
-    font-size: 13px;
-    margin-bottom: 18px;
-  }
-
-  .details p {
-    font-size: 14px;
-    padding: 10px 14px;
-  }
-
-  .details .icon {
-    font-size: 15px;
-  }
-
-  .edit-btn {
-    font-size: 15px;
-    padding: 11px 28px;
-  }
-
-  .profile-card.form-mode h2 {
-    font-size: 20px;
-    margin-bottom: 18px;
-  }
-
-  .profile-card.form-mode input {
-    padding: 11px 13px;
-    font-size: 14px;
-    margin-bottom: 14px;
-  }
-
-  .save-btn {
-    font-size: 15px;
-    padding: 12px 0;
-  }
-}
-
-/* ============================================================
-   Laptop → 769px and up
-   ============================================================ */
-@media (min-width: 769px) {
-  .profile-container {
-    padding: 16px 0;
-  }
-
-  .profile-card {
-    max-width: 480px;
-    padding: 30px 28px;
-  }
-
-  .avatar {
-    font-size: 76px;
-    margin-bottom: 12px;
-  }
-
-  .profile-card h2 {
-    font-size: 21px;
-  }
-
-  .details {
-    margin-bottom: 20px;
-  }
-
-  .details p {
-    font-size: 14px;
-    padding: 10px 14px;
-    margin-bottom: 9px;
-  }
-
-  .profile-card.form-mode input {
-    padding: 12px 14px;
-    margin-bottom: 16px;
-  }
-
-  .save-btn {
-    padding: 12px 0;
-  }
-}
-
-/* ============================================================
-   Desktop → 1025px and up
-   ============================================================ */
-@media (min-width: 1025px) {
-  .profile-container {
-    padding: 20px 0;
-  }
-
-  .profile-card {
-    max-width: 500px;
-    padding: 32px 30px;
-  }
-
-  .avatar {
-    font-size: 80px;
-    margin-bottom: 12px;
-  }
-
-  .profile-card h2 {
-    font-size: 22px;
-  }
-
-  .role {
-    font-size: 13px;
-    margin-bottom: 20px;
-  }
-
-  .details p {
-    font-size: 15px;
-    padding: 11px 16px;
-    margin-bottom: 10px;
-  }
-
-  .details .icon {
-    font-size: 16px;
-  }
-
-  .edit-btn {
-    font-size: 15px;
-    padding: 12px 32px;
-  }
-
-  .profile-card.form-mode h2 {
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-
-  .profile-card.form-mode input {
-    padding: 12px 15px;
-    font-size: 15px;
-    margin-bottom: 18px;
-  }
-
-  .save-btn {
-    font-size: 15px;
-    padding: 12px 0;
-  }
-}
-
-@media(max-width:480px){
+@media(max-width:768px){
 
 .profile-container{
 
-padding:15px;
+padding:18px 15px;
+align-items:flex-start;
 
 }
 
 .profile-card{
 
-padding:20px 16px;
+padding:22px 18px;
+border-radius:16px;
 
 }
 
 .avatar{
 
-font-size:60px;
+font-size:82px;
 
 }
 
 .profile-card h2{
 
-font-size:20px;
+font-size:24px;
+
+}
+
+.role{
+
+font-size:15px;
 
 }
 
 .details p{
 
-font-size:13px;
-padding:10px;
+font-size:14px;
+padding:12px;
 
 }
 
 .edit-btn,
 .save-btn{
 
-height:46px;
+font-size:15px;
+
+}
+
+.form-mode input{
+
+font-size:14px;
 
 }
 
 }
 
-@media(max-width:360px){
+/* ===========================
+   SMALL MOBILE
+=========================== */
+
+@media(max-width:480px){
+
+.profile-container{
+
+padding:15px 10px;
+
+}
 
 .profile-card{
 
-padding:18px 14px;
+padding:18px 15px;
 
 }
 
 .avatar{
 
-font-size:54px;
+font-size:72px;
 
 }
 
 .profile-card h2{
 
-font-size:18px;
-
-}
-
-.role{
-
-font-size:11px;
+font-size:22px;
 
 }
 
 .details p{
 
-font-size:12px;
-gap:8px;
+font-size:13px;
+gap:10px;
 
 }
 
-.details .icon{
+.edit-btn,
+.save-btn{
 
-font-size:13px;
+padding:12px;
+font-size:14px;
+
+}
+
+.form-mode input{
+
+padding:12px;
+font-size:14px;
+
+}
+
+}
+
+/* ===========================
+   LARGE SCREEN
+=========================== */
+
+@media(min-width:1200px){
+
+.profile-card{
+
+max-width:560px;
+padding:38px;
 
 }
 

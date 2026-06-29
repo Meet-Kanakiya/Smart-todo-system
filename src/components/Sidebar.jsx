@@ -48,8 +48,9 @@ export default function Sidebar({ activeSection, setActiveSection }) {
     { id: "planner", label: "Planner", icon: <Calendar size={18} /> },
     { id: "pomodoro", label: "Pomodoro", icon: <Timer size={18} /> },
     { id: "groups", label: "Groups", icon: <Users size={18} /> },
+    { id: "notes", label: "My Notes", icon: <StickyNote size={18} /> },
     { id: "analytics", label: "Analytics", icon: <BarChart3 size={18} /> },
-    { id: "ai", label: "AI Suggestions", icon: <Brain size={18} /> },
+    { id: "ai", label: "Study Suggestions", icon: <Brain size={18} /> },
   ];
 
   const handleNavClick = (id) => {
