@@ -41,9 +41,8 @@ const initializeFirebase = (setAuth) => {
 
 export default function Dashboard() {
 
-  const apiKey = process.env.REACT_APP_GEMINI_API_KEY;
-  const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
+  const API_KEY = process.env.REACT_APP_OPENROUTER_API_KEY;
+  // const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`;
   const navigate = useNavigate();
   const [auth, setAuth] = useState(null);
   const [activeSection, setActiveSection] = useState(
@@ -79,9 +78,7 @@ export default function Dashboard() {
       case "groups": return <Groups />;
       case "analytics": return <Analytics />;
       case "ai":
-        return <StudyAssistant
-          apiUrl={apiUrl}
-        />;
+        return <StudyAssistant />;
       default:
         return <Profile />;
     }

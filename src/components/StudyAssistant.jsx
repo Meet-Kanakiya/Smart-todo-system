@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 import "../css/StudyAssistant.css"
-const StudyAssistant = ({ apiUrl }) => {
+const StudyAssistant = () => {
     const [input, setInput] = useState("");
     const [response, setResponse] = useState("");
     const [loading, setLoading] = useState(false);
@@ -11,29 +14,38 @@ const StudyAssistant = ({ apiUrl }) => {
         setLoading(true);
 
         try {
-            const res = await fetch(apiUrl, {
+            const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
                 method: "POST",
                 headers: {
+                    "Authorization": `Bearer ${process.env.REACT_APP_OPENROUTER_API_KEY}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    contents: [
+                    model: "google/gemma-4-31b-it:free",
+                    messages: [
                         {
-                            parts: [
-                                {
-                                    text: `You are a helpful study assistant. Answer this: ${input}`,
-                                },
-                            ],
+                            role: "system",
+                            content: "You are a helpful study assistant."
                         },
-                    ],
-                }),
+                        {
+                            role: "user",
+                            content: input
+                        }
+                    ]
+                })
             });
 
-            const data = await res.json();
-            const answer =
-                data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response";
+            // console.log("Status:", res.status);
 
-            setResponse(answer);
+            const data = await res.json();
+
+            // console.log(JSON.stringify(data, null, 2));
+
+            if (!res.ok) {
+                throw new Error(data.error?.message || "API Error");
+            }
+
+            setResponse(data.choices[0].message.content);
         } catch (error) {
             setResponse("Error fetching AI response");
         }
@@ -59,7 +71,9 @@ const StudyAssistant = ({ apiUrl }) => {
             {response && (
                 <div className="response-box">
                     <h4>AI Answer:</h4>
-                    <p>{response}</p>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {response}
+                    </ReactMarkdown>
                 </div>
             )}
         </div>
